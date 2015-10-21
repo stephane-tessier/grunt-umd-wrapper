@@ -28,18 +28,19 @@ module.exports = function(grunt) {
 
         this.build = function(tpl, options) {
             var root = options.rootName;
-            var rootPrefix = root+'.';
+            var rootPrefix = root;
             var amd_req = [];
             var args = [];
             var cjs_args = [];
             var browser_args = [];
             var cjs_req = [];
+            grunt.log.writeln(this.imports.length, this.imports);
             for (var i=0,len=this.imports.length; i<len; i++) {
                 var imp = this.imports[i];
                 if (imp.val) {
                     args.push(imp.val);
                     cjs_args.push("require('"+imp.key+"')");
-                    browser_args.push(rootPrefix+imp.val);
+                    browser_args.push(rootPrefix+"['"+imp.key+"']");
                 } else {
                     cjs_req.push("require('"+imp.key+"');");
                 }
