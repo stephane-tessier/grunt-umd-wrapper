@@ -34,7 +34,6 @@ module.exports = function(grunt) {
             var cjs_args = [];
             var browser_args = [];
             var cjs_req = [];
-            grunt.log.writeln(this.imports.length, this.imports);
             for (var i=0,len=this.imports.length; i<len; i++) {
                 var imp = this.imports[i];
                 if (imp.val) {
